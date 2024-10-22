@@ -44,13 +44,19 @@ public class ClientApp{
             out.writeUTF(line);
             out.flush(); 
 
+            // System.out.println("First Response");
+
             String response = in_msg.readUTF();  // Read server response
             System.out.println(response);  // Print server's response
+
+            // System.out.println("2nd Response");
 
             String response2 = in_msg.readUTF();  // Read server response
             System.out.println(response2);  // Print server's response
 
             if (line.equals("play")){
+
+            System.out.println("Player card");
 
             String player_Card = in_msg.readUTF();  // Read server response
             System.out.println(player_Card);  // Print server's response
@@ -73,21 +79,28 @@ public class ClientApp{
             String evaluatePlayerHand = in_msg.readUTF();
             System.out.println(evaluatePlayerHand);
 
+            String playerFollowUp = in_msg.readUTF();
+            System.out.println(playerFollowUp);
+
             String dealer_Decision = in_msg.readUTF();
             System.out.println(dealer_Decision);
 
             String dealerFollowUp = in_msg.readUTF();
             System.out.println(dealerFollowUp);
 
-            String winner = in_msg.readUTF();
-            System.out.println(winner);
+            // System.out.println("Before Winner");
 
-            String payOutMSG = in_msg.readUTF();
-            System.out.println(payOutMSG);
+            // String winner = in_msg.readUTF();
+            // System.out.println(winner);
 
-            }
+            // System.out.println("After Winner");
 
+            // String payOut_MSG = in_msg.readUTF();
+            // System.out.println(payOut_MSG);
+
+            // System.out.println("Here");
         }
+    }
 
         close();
     }

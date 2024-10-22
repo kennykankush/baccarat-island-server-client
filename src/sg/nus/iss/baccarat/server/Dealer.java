@@ -32,5 +32,8 @@ public class Dealer {
         // System.out.println("Next card " + deck.getDeck().get(0));
         }
     
+    public void clearHandDealer(){
+        dealerHand.clear();
+    }
     
 }

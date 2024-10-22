@@ -17,6 +17,14 @@ public class baccaratEngine{
 
     String payOut_MSG = "";
 
+    public String getPayOut_MSG() {
+        return payOut_MSG;
+    }
+
+    public void setPayOut_MSG(String payOut_MSG) {
+        this.payOut_MSG = payOut_MSG;
+    }
+
     public String getWinner() {
         return winner;
     }
@@ -322,7 +330,7 @@ public class baccaratEngine{
                 double balanceUpdate = betWon + player.getBalance();
                 player.setBalance(balanceUpdate);
                 
-                this.payOut_MSG ="You won " + betWon;
+                setPayOut_MSG("You won " + betWon + ". Your balance is " + player.getBalance());
                 
 
             } else {
@@ -330,21 +338,26 @@ public class baccaratEngine{
                 double balanceUpdate = betWon + player.getBalance();
                 player.setBalance(balanceUpdate);
             
-                this.payOut_MSG ="You won " + betWon;
+                setPayOut_MSG("You won " + betWon + ". Your balance is " + player.getBalance());
             }
         }
 
         if (!winner.equals(team)){
-            this.payOut_MSG ="You lost";
+            double lostAmt = player.getBalance() - betAmount;
+            player.setBalance(lostAmt);
+
+            setPayOut_MSG("You lost. Your balance is " +  player.getBalance());
 
         }
 
     }
     
-    public void resetGame(Player player){
+    public void resetGame(Player player, Dealer dealer){
 
         playerValueList.clear();
         dealerValueList.clear();
+        player.clearHandPlayer();
+        dealer.clearHandDealer();
         setPlayerState("");
         setDealerState("");
         setPlayerThirdCard(false);

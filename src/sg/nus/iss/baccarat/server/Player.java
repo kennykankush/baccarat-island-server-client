@@ -72,6 +72,11 @@ public class Player {
         currentBalance += topUp;
         setBalance(currentBalance);
     }
+
+    public void clearHandPlayer(){
+        playerHand.clear();
+    }
+
 }
 
 

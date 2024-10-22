@@ -102,7 +102,7 @@ public class ServerApp {
 
                         System.out.println("User's balance: " + user.getBalance());
 
-                        if (hasDeposited && !hasChip ){
+                        if (hasDeposited && !hasChip){
                             response = "You have deposited " + depositAmount + " berries!";
                             out.writeUTF(response);
                             out.flush();
@@ -218,16 +218,17 @@ public class ServerApp {
                         out.flush();
                         try {Thread.sleep(1000); }
                         catch (InterruptedException e) {}
-
+                        
                         System.out.println(user.getBetAmount() +  user.getBet());
                         engine.payOut(user, user.getBetAmount(), user.getBet());
-                        String payOut_MSG = engine.payOut_MSG;
+                        System.out.println(engine.getPayOut_MSG());
+                        String payOut_MSG = engine.getPayOut_MSG();
                         out.writeUTF(payOut_MSG);
                         out.flush();
                         try {Thread.sleep(1000); }
                         catch (InterruptedException e) {}
 
-                        engine.resetGame(user);
+                        engine.resetGame(user, dealer);
                         hasChip = false;
 
                     } else if (line.equals("quit")){
@@ -239,7 +240,7 @@ public class ServerApp {
                         out.flush();
 
                     }
-
+                System.out.println("Is the loop working?");
             }
             
         }
